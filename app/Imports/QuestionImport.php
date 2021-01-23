@@ -2,12 +2,12 @@
 
 namespace App\Imports;
 
-use App\Models\Category;
+use App\Models\Question;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class CategoryImport implements ToModel, WithHeadingRow
+class QuestionImport implements ToModel, WithHeadingRow
 {
     use Importable;
     /**
@@ -17,9 +17,8 @@ class CategoryImport implements ToModel, WithHeadingRow
      */
     public function model(array $row)
     {
-        return new Category([
-            'title'     => $row['categoria'],
-            'description'    => $row['descricao'],
+        return new Question([
+            //
         ]);
     }
 }
