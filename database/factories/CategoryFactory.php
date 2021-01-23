@@ -2,8 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Imports\CategoryImport;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CategoryFactory extends Factory
 {
@@ -21,6 +23,8 @@ class CategoryFactory extends Factory
      */
     public function definition()
     {
+        Excel::import(new CategoryImport, storage_path('app/tablesheets/categorias_spcapps.xlsx'));
+
         return [
             //
         ];
