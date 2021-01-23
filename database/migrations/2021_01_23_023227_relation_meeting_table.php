@@ -14,10 +14,10 @@ class RelationMeetingTable extends Migration
     public function up()
     {
         Schema::table('meetings', function (Blueprint $table) {
-            $table->foreign('questions')
+            $table->foreign('question_id')
                 ->references('id')
                 ->on('questions');
-            $table->foreign('user')
+            $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
         });

@@ -20,7 +20,7 @@ class CreateSupportsTable extends Migration
             $table->text('description');
             $table->string('link');
             $table->string('asset');
-            $table->foreignId('questions');
+            $table->foreignId('question_id');
             $table->timestamps();
         });
     }

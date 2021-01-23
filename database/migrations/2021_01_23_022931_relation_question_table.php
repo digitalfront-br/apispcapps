@@ -14,10 +14,10 @@ class RelationQuestionTable extends Migration
     public function up()
     {
         Schema::table('questions', function (Blueprint $table) {
-            $table->foreign('categories')
+            $table->foreign('category_id')
                 ->references('id')
                 ->on('categories');
-            $table->foreign('supports')
+            $table->foreign('support_id')
                 ->references('id')
                 ->on('supports');
         });

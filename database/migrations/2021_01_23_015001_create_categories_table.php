@@ -17,7 +17,6 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->string('title')->nullable();
             $table->text('description')->nullable();
-            $table->foreignId('questions')->nullable();
             $table->timestamps();
         });
     }

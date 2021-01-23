@@ -14,7 +14,7 @@ class RelationSupportTable extends Migration
     public function up()
     {
         Schema::table('supports', function (Blueprint $table) {
-            $table->foreign('questions')
+            $table->foreign('question_id')
                 ->references('id')
                 ->on('questions');
         });
