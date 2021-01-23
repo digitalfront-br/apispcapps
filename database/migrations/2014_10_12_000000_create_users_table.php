@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('phone');
             $table->text('bio');
             $table->integer('status');
-            $table->foreignId('meeting_id');
+            $table->foreignId('meeting_id')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
