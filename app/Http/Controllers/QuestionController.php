@@ -2,63 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\QuestionResource;
 use App\Models\Question;
 use Illuminate\Http\Request;
 
-class QuestionController extends Controller
+class QuestionController extends CrudController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function __construct(Question $question)
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        $this->entity = $question;
+        $this->resourceCollection = QuestionResource::collection($this->entity->paginate(20));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Question  $question
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Question $question)
+    public function show($id)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Question  $question
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Question $question)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Question  $question
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Question $question)
-    {
-        //
+        $entidade = new QuestionResource(Question::findOrFail($id));
+        return $entidade;
     }
 }

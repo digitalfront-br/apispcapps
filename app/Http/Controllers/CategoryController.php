@@ -2,63 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class CategoryController extends CrudController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function __construct(Category $category)
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        $this->entity = $category;
+        $this->resourceCollection = CategoryResource::collection($this->entity->paginate(5));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($id)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Category $category)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Category $category)
-    {
-        //
+        $entidade = new CategoryResource(Category::findOrFail($id));
+        return $entidade;
     }
 }
